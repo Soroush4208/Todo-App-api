@@ -1,9 +1,14 @@
 import { El } from "@/components/shared/El"
 
 export const Header =()=>{
+  const showMadal =()=>{
+    const overlay = document.getElementById("overlay");
+    overlay.style.display="block"
+}
+
     return El({
         element: 'Header',
-        className: 'w-full bg-[#6200ea] flex justify-between p-4',
+        className: 'w-full bg-[#6200ea] flex justify-between p-2',
         children: [
           El({
             element: 'div',
@@ -11,7 +16,6 @@ export const Header =()=>{
             children: [
               El({
                 element: 'img',
-                className: 'cursor-pointer',
                 src: './src/assets/svg/Menu Cheesesburger.svg',
                 alt: 'icon_menu',
               }),
@@ -33,7 +37,7 @@ export const Header =()=>{
                   El({
                     element: 'input',
                     className:
-                      'rounded-md pl-9 py-1 outline-0 opacity-100 placeholder-opacity-100 bg-[#d5d5ec40]',
+                      'rounded pl-9 outline-0 opacity-100 placeholder-opacity-100 bg-[#d5d5ec40]',
                     id: 'search',
                     type: 'text',
                     placeholder: 'Search',
@@ -41,24 +45,24 @@ export const Header =()=>{
                   }),
                   El({
                     element: 'img',
-                    className: 'absolute p-2 w-10 cursor-pointer',
+                    className: 'absolute p-2 w-8 cursor-pointer',
                     src: './src/assets/svg/Search 2.svg',
                   }),
                 ],
               }),
               El({
                 element: 'img',
-                className: 'w-6 cursor-pointer',
+                className: 'w-4 cursor-pointer',
                 src: './src/assets/svg/filter-keyword-svgrepo-com.svg',
                 alt: 'filter',
               }),
               El({
                 element: 'img',
-                className: 'w-6 cursor-pointer',
+                className: 'w-4 cursor-pointer',
                 id: 'addData',
                 alt: 'addUser',
                 src: './src/assets/svg/plus-square-svgrepo-com.svg',
-                // eventListener: [{ event: 'click', callback: showMadal }],
+                eventListener: [{ event: 'click', callback: showMadal }],
               }),
             ],
           }),
