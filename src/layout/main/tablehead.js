@@ -1,4 +1,5 @@
 import { El } from "@/components/shared/El";
+import { TableRow } from "./tableRow";
 
 export const TableTask = () => {
   return El({
@@ -54,7 +55,6 @@ export const TableTask = () => {
             El({
                 element:"tr",
                 children:[
-                    
                 ]
             })
         ]

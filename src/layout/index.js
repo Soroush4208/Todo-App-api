@@ -1,6 +1,6 @@
 import { El } from "@/components/shared/El"
 import { Header } from "./header/header"
-import { TableTask } from "./main/main"
+import { TableTask } from "./main/tablehead"
 import { ModalCreate } from "./modalCreate/create"
 
 export const Content =()=>{

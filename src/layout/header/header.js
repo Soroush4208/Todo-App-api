@@ -3,7 +3,9 @@ import { El } from "@/components/shared/El"
 export const Header =()=>{
   const showMadal =()=>{
     const overlay = document.getElementById("overlay");
-    overlay.style.display="block"
+    const modal = document.getElementById("modal");
+    overlay.style.display="block";
+    modal.style.display="block"
 }
 
     return El({
