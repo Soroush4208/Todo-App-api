@@ -1,5 +1,6 @@
 import { El } from "@/components/shared/El";
 import { TableRow } from "../main/tableRow";
+import { addToOrder } from "@/api/setData";
 
 export const ModalCreate = () => {
   const closeModal = () => {
@@ -7,6 +8,37 @@ export const ModalCreate = () => {
     const overlay = document.getElementById("overlay");
     modal.style.display = "none";
     overlay.style.display = "none";
+  };
+  let obj = {};
+  const changeTitle = (e) => {
+    const title = e.target.value;
+    obj.title = title;
+  };
+  
+  const changePriority = (event) => {
+    const selectPriority = event.target.value;
+    // console.log(selectPriority);
+    obj.priority = selectPriority;
+  };
+  const changeStatus = (e) => {
+    const selectStatus = e.target.value;
+    obj.status = selectStatus;
+  };
+  const changeDescription = (e) => {
+    const description = e.target.value;
+    obj.description = description;
+  };
+  const changeDeadline= (e) => {
+    const deadline = e.target.value;
+    obj.deadline = deadline;
+  };
+  console.log(obj);
+
+  const SubmitBtn = (e) => {
+    e.preventDefault();
+    addToOrder(obj);
+    console.log("pkh");
+    closeModal()
   };
 
   return El({
@@ -47,6 +79,12 @@ export const ModalCreate = () => {
                         className:
                           "p-2 shadow-gray-900 opacity-50 hover:opacity-100 bg-black text-white shadow-md rounded-2xl w-full outline-none font-black text-sm h-9",
                         placeholder: "Task Name",
+                        eventListener: [
+                          {
+                            event: "change",
+                            callback: changeTitle,
+                          },
+                        ],
                       }),
                       El({
                         element: "div",
@@ -58,6 +96,12 @@ export const ModalCreate = () => {
                             className:
                               "p-2 rounded-l-full w-2/4 bg-black text-white outline-none shadow-gray-900 shadow-md font-black text-sm font-serif opacity-50 hover:opacity-100 ",
                             id: "selectPriority",
+                            eventListener: [
+                              {
+                                event: "change",
+                                callback: changePriority,
+                              },
+                            ],
                             children: [
                               El({
                                 element: "option",
@@ -86,6 +130,12 @@ export const ModalCreate = () => {
                             className:
                               "p-2 rounded-r-full w-2/4 bg-black text-white outline-none shadow-gray-900 shadow-md font-black text-sm font-serif opacity-50 hover:opacity-100 ",
                             id: "selectStatus",
+                            eventListener: [
+                              {
+                                event: "change",
+                                callback: changeStatus,
+                              },
+                            ],
                             children: [
                               El({
                                 element: "option",
@@ -122,6 +172,12 @@ export const ModalCreate = () => {
                             className:
                               "p-2 rounded-l-full w-2/4 bg-black text-white outline-none shadow-gray-900 shadow-md font-black text-sm font-serif opacity-50 hover:opacity-100 h-8",
                             placeholder: "Writing a description is optional",
+                            eventListener: [
+                              {
+                                event: "change",
+                                callback: changeDescription,
+                              },
+                            ],
                           }),
                           El({
                             element: "input",
@@ -131,7 +187,14 @@ export const ModalCreate = () => {
                             value: "1402-12-21",
                             className:
                               "p-2 rounded-r-full w-2/4 bg-black text-white outline-none shadow-gray-900 shadow-md font-black text-sm font-serif opacity-50 hover:opacity-100  h-8",
+                              eventListener: [
+                                {
+                                  event: "change",
+                                  callback: changeDeadline,
+                                },
+                              ],
                           }),
+                          
                         ],
                       }),
                       El({
@@ -140,12 +203,14 @@ export const ModalCreate = () => {
                         className: "btn shadow-gray-900 shadow-md",
                         type: "submit",
                         id: "submitBtn",
+                        eventListener: [
+                          { event: "click", callback: SubmitBtn },
+                        ],
                       }),
                     ],
                   }),
                 ],
               }),
-              
             ],
           }),
         ],

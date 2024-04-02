@@ -45,19 +45,12 @@ export const TableTask = () => {
               }),
             ],
           }),
+          El({
+            element: "tbody",
+            id: "tbody",
+            children:[TableRow()],
+          }),
         ],
-        
-      }),
-      El({
-        element:"tbody",
-        id:"tbody",
-        children:[
-            El({
-                element:"tr",
-                children:[
-                ]
-            })
-        ]
       }),
     ],
   });
