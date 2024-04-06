@@ -1,4 +1,5 @@
 import { El } from "@/components/shared/El"
+import { showModalFilter } from "../modalFilter/modalFilter";
 
 export const Header =()=>{
   const showMadal =()=>{
@@ -57,6 +58,7 @@ export const Header =()=>{
                 className: 'w-4 cursor-pointer',
                 src: './src/assets/svg/filter-keyword-svgrepo-com.svg',
                 alt: 'filter',
+                eventListener: [{ event: 'click', callback: showModalFilter }],
               }),
               El({
                 element: 'img',
