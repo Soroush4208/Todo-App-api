@@ -33,12 +33,21 @@ export const ModalCreate = () => {
     obj.deadline = deadline;
   };
   console.log(obj);
-
+// function changePriority(){
+    //   if (order.priority === "Low") {
+    //     className="spans bg-slate-400 font-bold";
+    //   } else if (order.priority === "Medium") {
+    //     className="spans bg-yellow-400 font-bold";
+    //   } else if (order.priority === "High") {
+    //     className="spans bg-red-500 text-white font-bold";
+    //   }
+    // }
   const SubmitBtn = (e) => {
     e.preventDefault();
     addToOrder(obj);
     console.log("pkh");
     closeModal()
+    location.reload()
   };
 
   return El({
@@ -57,8 +66,12 @@ export const ModalCreate = () => {
         children: [
           El({
             element: "span",
-            className: "flex justify-center font-bold",
+            className: "flex justify-center font-bold text-violet-700 font-black text-2xl font-serif",
             innerText: "Create A Tasks ! 😉",
+          }),
+          El({
+            element: "hr",
+            className: "mt-3",
           }),
           El({
             element: "div",

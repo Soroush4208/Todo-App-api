@@ -1,17 +1,15 @@
 import { El } from "@/components/shared/El";
 import { getOrders } from "@/api/getData";
-const orders = await getOrders()
+import { deleteData } from "@/api/deleteData/delet";
+const orders = await getOrders();
 console.log(orders);
 
 export const TableRow = () => {
-  
-  const data = orders.map((order)=>{
+  const data = orders.map((order) => {
     console.log(order);
+    
     return El({
-      element:"tbody",
-      children:[
-        El({
-          element: "tr",
+      element: "tr",
       children: [
         El({
           element: "td",
@@ -25,9 +23,8 @@ export const TableRow = () => {
           children: [
             El({
               element: "span",
-              className: "span",
+              className:"spans",
               innerText: order.priority,
-              
             }),
           ],
         }),
@@ -48,7 +45,7 @@ export const TableRow = () => {
           children: [
             El({
               element: "span",
-              className: "span",
+              className: "spans border border-blue-500",
               innerText: order.deadline,
             }),
           ],
@@ -60,13 +57,16 @@ export const TableRow = () => {
             El({
               element: "div",
               className:
-                "flex justify-center items-center gap-1 py-1 border border-slate-300 py-2 text-center",
+                "flex justify-center items-center gap-1 py-1 py-2 text-center",
               children: [
                 El({
                   element: "img",
                   className: "bg-red-600 cursor-pointer w-8 px-2 py-1 rounded",
                   src: "./src/assets/svg/trash-bin-minimalistic-2-svgrepo-com.svg",
                   elt: "icon trash",
+                  eventListener:[
+                    {event:"click" , callback:deleteData}
+                  ]
                 }),
                 El({
                   element: "img",
@@ -76,7 +76,8 @@ export const TableRow = () => {
                 }),
                 El({
                   element: "img",
-                  className: "bg-slate-600 cursor-pointer w-8 px-2 py-1 rounded",
+                  className:
+                    "bg-slate-600 cursor-pointer w-8 px-2 py-1 rounded",
                   src: "./src/assets/svg/eye-svgrepo-com.svg",
                   elt: "icon eye",
                 }),
@@ -85,28 +86,13 @@ export const TableRow = () => {
           ],
         }),
       ],
-      
-        })
-      ]
-    })
+    });
+  });
 
-  })
-  // const changeBgColorPriority =()=>{
-  //   if (order.priority === "Low") {
-  //     spanPriority.className = "spans bg-slate-400 font-bold";
-  //   } else if (item.priority === "Medium") {
-  //     spanPriority.className = "spans bg-yellow-400 font-bold";
-  //   } else if (item.priority === "High") {
-  //     spanPriority.className = "spans bg-red-500 text-white font-bold";
-  //   }
-  //   return ;
-  // }
   console.log(data);
   return El({
     element:"tbody",
     id:"tbody",
-    children:[
-      ...data
-    ]
-  })
+    children:data,
+  });
 };
